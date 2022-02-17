@@ -21,17 +21,17 @@ Secondly we extend the existing API in Stoplight about a second method by import
 1. Open the initial API-Swagger-Version in Stoplight and explain Stoplight  
 2. Deploy the very bare API-Version into the API-Management platform with minimal configuration (not explaing the CLI)  
 ``
-apim.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/1-design-only-config.json
+apim.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h dev -u apiadmin -p changeme -c api-definition/1-design-only-config.json
 ``
 3. API is deployed, with only 1 Method, explore it in API-Portal  
 4. Re-Deploy the same 1-Method-API with an Images, some tags, etc.  
 ``
-apim.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/2-design-with-image-config.json
+apim.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h dev -u apiadmin -p changeme -c api-definition/2-design-with-image-config.json
 ``
 4. As the initial API-Version has only one useless method, we are now loading the 2nd version of the API-Swagger into Stoplight: 2-imagine-weather-api-2nd-version.json  
 5. And re-deploy with the same configuration (incl. Image, Tags, etc.)  
 ``
-scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/2-design-with-image-config.json
+scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h dev -u apiadmin -p changeme -c api-definition/2-design-with-image-config.json
 ``
 
 ### Mock-Up the Initial API
@@ -43,7 +43,7 @@ We now assume, that we got enough feedback on the Base-API-Design and it's time 
 4. Changing the Swagger-File in Stoplight - Removing the "No-Mock" notice
 5. Now switching the config file to include the Backend-Base-Path, Backend-Security, added the Mock-Tag  
 ``
-scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/3-mock-up-config.json
+scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h dev -u apiadmin -p changeme -c api-definition/3-mock-up-config.json
 ``
 6. Re-Load the API in API-Portal, explain the changes and trigger a request, the Mock will return an answer  
 
@@ -58,7 +58,7 @@ It's time to implement the API with API-Builder. Explain the concept of Connecto
 6. We decide to re-configure the API in API-Manager to use our Implementation-Service
 7. It's time to Publish the API, incl. API-Key Front-End-Security. Re-Deploy the API with config: 4-complete-config.json  
 ``
-scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/4-complete-config.json
+scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h dev -u apiadmin -p changeme -c api-definition/4-complete-config.json
 ``
 ### Implement the API using API-Builder
 As the final stage, after the API has been published and potentially used by Apps-, make clear, that even in that stage, the API can evolve by adding additional fields/methods to this API.  
@@ -66,7 +66,7 @@ As the final stage, after the API has been published and potentially used by App
 1. Import the Swagger-File: 3-imagine-weather-api-final-version.json which has an additional method  
 2. Deploy that API into the API-Manager (same configuration)  
 ``
-scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h api-env -u apiadmin -p changeme -c api-definition/4-complete-config.json
+scripts\run-swagger-import.bat -a "https://next-api.stoplight.io/files.export?projectId=19639&branch=version%2F1.0&path=weather.oas2.yml" -h dev -u apiadmin -p changeme -c api-definition/4-complete-config.json
 ``
 3. Reload the API in API-Portal to illustrate that existing Subscriptions stay and the API was deployed with Zero-Down-Time to consumers
 
